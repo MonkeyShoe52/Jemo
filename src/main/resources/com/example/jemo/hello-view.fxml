@@ -9,30 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.jemo.HelloController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jemo.HelloController">
   <tabs>
-    <Tab text="List">
+    <Tab text="To Do">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="newButton" layoutX="30.0" layoutY="34.0" mnemonicParsing="false" onAction="#onActionNew" prefHeight="94.0" prefWidth="106.0" text="New">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="prevButton" layoutX="413.0" layoutY="42.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="142.0" text="bring Back">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="DeleteButton" layoutX="41.0" layoutY="237.0" mnemonicParsing="false" onAction="#onActiondelete" prefHeight="96.0" prefWidth="125.0" text="Delete">
+                  <Button fx:id="newButton" layoutX="247.0" layoutY="233.0" mnemonicParsing="false" onAction="#onActionNew" prefHeight="94.0" prefWidth="106.0" text="New">
                      <font>
                         <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="nextButton" layoutX="423.0" layoutY="239.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="107.0" text="Next">
-                     <font>
-                        <Font size="24.0" />
                      </font>
                   </Button>
                   <TextField fx:id="textField" layoutX="128.0" layoutY="160.0" prefHeight="49.0" prefWidth="316.0" />
@@ -44,13 +29,46 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="List 2">
+    <Tab text="List ">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="listView" layoutX="18.0" layoutY="20.0" prefHeight="322.0" prefWidth="561.0" />
+                  <ListView fx:id="listView" layoutX="18.0" layoutY="20.0" prefHeight="208.0" prefWidth="561.0" />
+                  <Button fx:id="DeleteButton1" layoutX="60.0" layoutY="237.0" mnemonicParsing="false" onAction="#onActiondelete" prefHeight="96.0" prefWidth="125.0" text="Delete">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="CompleteButton1" layoutX="366.0" layoutY="238.0" mnemonicParsing="false" onAction="#onActionComplete" prefHeight="94.0" prefWidth="190.0" text="Complete">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>
+      <Tab text="Deleted">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listView2" layoutX="14.0" layoutY="14.0" prefHeight="234.0" prefWidth="572.0" />
+                  <Button fx:id="BringBackButton1" layoutX="223.0" layoutY="259.0" mnemonicParsing="false" onAction="#onActionBringBack" prefHeight="85.0" prefWidth="142.0" text="Bring Back">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Completed ">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listView3" layoutX="14.0" layoutY="14.0" prefHeight="338.0" prefWidth="573.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
   </tabs>
 </TabPane>
