@@ -5,6 +5,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.collections.ObservableList;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 public class HelloController {
  // Fields for data
  // Fields for your controls
@@ -18,6 +22,7 @@ public class HelloController {
  public ListView listView3;
 public TextField textField;
  public Button DeleteButton;
+ public Button RedoButton;
 
  public void onActionNew() {
   String whatTheUserTyped = textField.getText();
@@ -48,7 +53,21 @@ public TextField textField;
   }
  }
 
+ public void onActionRedo() {
+  ObservableList selectedIndices = listView3.getSelectionModel().getSelectedItems();
+  for (Object o : selectedIndices) {
+   listView3.getItems().remove(o);
+   listView.getItems().add(o);
+  }
+ }
 
+  public void saveData() throws Exception {
+   File fileForData = new File( "Jaden");
+   FileOutputStream outputStream = new FileOutputStream(fileForData);
+   ObjectOutputStream objOutputStream = new ObjectOutputStream(outputStream);
+   objOutputStream.writeObject(listView);
+   objOutputStream.flush();
+  }
 
 }
 //Initialize method
