@@ -5,9 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.collections.ObservableList;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class HelloController {
  // Fields for data
@@ -24,7 +22,14 @@ public TextField textField;
  public Button DeleteButton;
  public Button RedoButton;
 
- public void onActionNew() {
+    public HelloController() throws IOException {
+    }
+
+    public void initialize() throws Exception {
+     restoreData();
+    }
+
+    public void onActionNew() {
   String whatTheUserTyped = textField.getText();
   listView.getItems().add(whatTheUserTyped);
  }
@@ -45,11 +50,12 @@ public TextField textField;
   }
  }
 
- public void onActionComplete() {
+ public void onActionComplete() throws Exception {
   ObservableList selectedIndices = listView.getSelectionModel().getSelectedItems();
   for (Object o : selectedIndices) {
    listView.getItems().remove(o);
    listView3.getItems().add(o);
+   this.saveData();
   }
  }
 
@@ -65,10 +71,25 @@ public TextField textField;
    File fileForData = new File( "Jaden");
    FileOutputStream outputStream = new FileOutputStream(fileForData);
    ObjectOutputStream objOutputStream = new ObjectOutputStream(outputStream);
-   objOutputStream.writeObject(listView);
+   objOutputStream.writeObject(listView3);
    objOutputStream.flush();
   }
 
-}
+ void restoreData() throws Exception {
+  File fileForData = new File("Jaden");
+  FileInputStream inputStream = new FileInputStream(fileForData);
+  ObjectInputStream objInputStream = new ObjectInputStream(inputStream);
+  int numOfSavedObjects = objInputStream.readInt();
+  for (int i = 0; i < numOfSavedObjects; i = i + 1) {
+   String listText = (String) objInputStream.readObject();
+
+   ;
+  }
+  inputStream.close();}}
+ // readObjects from objInputStream and store those objects into your fields
+
+
+
+
 //Initialize method
     //Methods for all onActions
